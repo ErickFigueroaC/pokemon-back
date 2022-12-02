@@ -9,6 +9,7 @@ app.set('port', 8080);
 
 // Middlewares
 app.use(morgan('dev'));
+app.use(express.json());
 
 // Routes
 app.use('/api/pokemons', pokemonRoutes);

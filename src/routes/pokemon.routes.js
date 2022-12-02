@@ -4,5 +4,6 @@ import { methods as pokemonController } from './../controllers/pokemon.controlle
 const router = Router();
 
 router.get('/', pokemonController.getPokemons);
+router.post('/', pokemonController.addPokemon);
 
 export default router;
