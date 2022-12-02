@@ -13,20 +13,8 @@ const getPokemons = async (req, res) => {
 
 const addPokemon = async (req, res) => {
   try {
-    const { codigoPokemon, sexo, puebloNatal, pokeballs, frutas, pociones, nombre } = req.body;
-    if (
-      codigoPokemon == undefined ||
-      sexo == undefined ||
-      puebloNatal == undefined ||
-      pokeballs == undefined ||
-      frutas == undefined ||
-      pociones == undefined ||
-      nombre == undefined
-    ) {
-      res.status(400).json({ message: 'Bad Request. Please fill all the fields.' });
-      return;
-    }
-    const pokemon = { codigoPokemon, sexo, puebloNatal, pokeballs, frutas, pociones, nombre };
+    const { codigoPokemon, codigoEntrenador, mote, especie, codigoPokedex } = req.body;
+    const pokemon = { codigoPokemon, codigoEntrenador, mote, especie, codigoPokedex};
     const connection = await getConnection();
     const result = await connection.query('INSERT INTO Pokemon SET ?', pokemon);
     res.json(result);
