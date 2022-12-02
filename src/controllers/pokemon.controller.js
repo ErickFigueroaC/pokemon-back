@@ -24,6 +24,23 @@ const addPokemon = async (req, res) => {
   }
 };
 
+const updatePokemon = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { codigoEntrenador, mote, especie, codigoPokedex } = req.body;
+    const pokemon = { codigoEntrenador, mote, especie, codigoPokedex };
+    const connection = await getConnection();
+    const result = await connection.query('UPDATE Pokemon SET ? WHERE codigoPokemon = ?', [
+      pokemon,
+      id,
+    ]);
+    res.json(result);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+};
+
 const deletePokemon = async (req, res) => {
   try {
     const { id } = req.params;
@@ -39,5 +56,6 @@ const deletePokemon = async (req, res) => {
 export const methods = {
   getPokemons,
   addPokemon,
+  updatePokemon,
   deletePokemon,
 };
