@@ -4,15 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "babel-node": "babel-node --presets=@babel/preset-env",
+    "start": "nodemon --exec npm run babel-node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "promise-mysql": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }
 }
